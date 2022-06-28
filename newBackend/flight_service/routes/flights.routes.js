@@ -4,14 +4,14 @@ const { createFlight, findFlightById, findAllFlights, deleteFlightById } = requi
 
 // GET /movies
 router.get('/', async (req, res) => {
-    const movies = await findAllFlights();
-    res.json(movies);
+    const flights = await findAllFlights();
+    res.json(flights);
 });
 
 router.post('/', async (req, res) => {
     try {
-        const movieId = await createFlight(req.body);
-        res.status(201).json({_id: movieId});
+        const flightId = await createFlight(req.body);
+        res.status(201).json({_id: flightId});
     } catch (err) {
         res.status(err?.status || 500).json(err);
     }
