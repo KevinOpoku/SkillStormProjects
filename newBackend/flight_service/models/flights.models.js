@@ -5,8 +5,8 @@ const flightSchema = new Schema({
     flightNumber: Number,
     departureDate: Date,
     arrivalDate: Date,
-    departureTime: Date,
-    arrivalTime: Date,
+    departureTime: String,
+    arrivalTime: String,
     departureAirport: String,
     arrivalAirport: String,
     currentNumPassengers: Number,
@@ -14,4 +14,5 @@ const flightSchema = new Schema({
 
 })
 
-const flight = mongoose.model('Flights', flightSchema, 'Flights')
+const flight = mongoose.model('Flights', flightSchema, 'Flights');
+module.exports = flight;

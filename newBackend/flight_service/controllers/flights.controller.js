@@ -22,4 +22,49 @@ const createFlight = async ({flightNumber, departureDate, arrivalDate, departure
     }
 }
 
-module.exports = {createFlight};
+const findFlightById = async id => {
+    try {
+        // If no movie is found, this does NOT return a rejected promise. Instead null is returned
+        const flight = await Flight.findById(id);
+        if (flight == null) {
+            throw `No flight with the id of ${id} found.`;
+        }
+        return flight; // Movie was found and we return it
+    } catch (err) {
+        console.error(err);
+        throw { status: 404, message: err }; // Akin to rejecting a Promise
+    }
+}
+
+
+const findAllFlights = async(limit=0) => {
+    const flight = await Flight.find();
+    return flight;
+}
+
+const deleteFlightById = async id => {
+    try{
+        const flight = await Flight.deleteOne({ _id: id });
+        if (flight == null){
+            throw `No flight with the id of ${id} found.`;
+        }
+        return `Flight Deleted`
+    }catch(err) {
+        console.error(err);
+        throw {status: 404, message: err};
+    }
+}
+
+const updateFlight = async (  id, flightNumber, departureDate,arrivalDate,departureTime,arrivalTime,departureAirport,arrivalAirport,currentNumPassengers,passengerLimit) => {
+
+    try{
+        const flight = await Flight.findById();
+        await flight.updateMany({flightNumber: flightNumber, departureDate: departureDate,arrivalDate: arrivalDate,departureTime: departureTime,arrivalTime: arrivalTime,departureAirport: departureAirport,arrivalAirport: arrivalAirport,currentNumPassengers: currentNumPassengers,passengerLimit:passengerLimit});
+        return `Fields updated for flight ${flightNumber}`;
+    }
+    catch(err){
+        console.error(err);
+        throw {status: 404, message:err};
+    }
+}
+module.exports = {createFlight, findAllFlights, findFlightById, deleteFlightById, deleteFlightById,updateFlight};
