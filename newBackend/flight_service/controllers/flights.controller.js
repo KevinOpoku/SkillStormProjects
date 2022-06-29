@@ -55,12 +55,20 @@ const deleteFlightById = async id => {
     }
 }
 
-const updateFlight = async (  id, flightNumber, departureDate,arrivalDate,departureTime,arrivalTime,departureAirport,arrivalAirport,currentNumPassengers,passengerLimit) => {
-
+const updateFlight = async (id, body) => {
+    console.log(id);
+    console.log(body.flightNumber);
+    const updates = {flightNumber: body.flightNumber, departureDate: body.departureDate,arrivalDate: body.arrivalDate,departureTime: body.departureTime,arrivalTime: body.arrivalTime,departureAirport: body.departureAirport,arrivalAirport: body.arrivalAirport,currentNumPassengers: body.currentNumPassengers,passengerLimit: body.passengerLimit}
     try{
-        const flight = await Flight.findById();
-        await flight.updateMany({flightNumber: flightNumber, departureDate: departureDate,arrivalDate: arrivalDate,departureTime: departureTime,arrivalTime: arrivalTime,departureAirport: departureAirport,arrivalAirport: arrivalAirport,currentNumPassengers: currentNumPassengers,passengerLimit:passengerLimit});
-        return `Fields updated for flight ${flightNumber}`;
+        const flight = await Flight.findOneAndUpdate({_id:id},updates, {new: true});
+        console.log(flight);                                                  
+        await flight.save();
+        if (flight == null){
+            throw `No flight with the id of ${id} found.`
+        }
+        return flight;
+        //await flight.updateMany({flightNumber: flightNumber, departureDate: departureDate,arrivalDate: arrivalDate,departureTime: departureTime,arrivalTime: arrivalTime,departureAirport: departureAirport,arrivalAirport: arrivalAirport,currentNumPassengers: currentNumPassengers,passengerLimit:passengerLimit});
+        //return `Fields updated for flight ${id}`;
     }
     catch(err){
         console.error(err);

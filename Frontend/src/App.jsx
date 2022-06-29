@@ -6,8 +6,10 @@ import ThemeContext, {themes} from './components/contexts/ThemeContext';
 import {CreateFlight} from './components/Form';
 import { CFlights} from './pages/CreateFlight';
 import { DisplayFlights } from './pages/DisplayFlight';
+import {UFlights} from './pages/UpdateFlight';
 import { Error } from './pages/Error';
 import { AppNav } from './components/features/AppNav';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   // Whatever is returned from these functions will be what is rendered
@@ -34,6 +36,7 @@ const App = () => {
                   <Route path="/" element= "" />
                   <Route path="/Createflights" element={<CFlights />} />
                   <Route path="/Displayflights" element={<DisplayFlights />} />
+                  <Route path='/Updateflights' element={<UFlights />} />
                   <Route path="*" element={<Error />} />
                   
               </Routes>

@@ -16,13 +16,13 @@ export const AppNav = () => {
                     Home
                 </NavItem>
                 <NavItem>
-                    <NavLink to="/CreateFlights" transitionColor="#0000FF">Create Flights</NavLink>
+                    <NavLink to="/CreateFlights" transitionColor="gold">Create Flights</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to="/DisplayFlights" transitionColor="#0000FF">Display Flights</NavLink>
+                    <NavLink to="/DisplayFlights" transitionColor="gold">Display Flights</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink to="/DeleteFlights" transitionColor="#0000FF">Delete a Flight</NavLink>
+                    <NavLink to="/DeleteFlights" transitionColor="gold">Delete a Flight</NavLink>
                 </NavItem>
                 <NavItem>
                     <NavLink to="/UpdateFlights" transitionColor="#0000FF">Update Flights</NavLink>

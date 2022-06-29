@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './FlightList.css';
 export const FlightList = () => {
 
     const [flights, setFlights] = useState([]);
@@ -30,15 +30,18 @@ export const FlightList = () => {
                 // Using index is a last resort if you have nothing else to use
                 // Unique ids should be used ONLY if the id was created at time of data creation (It won't change)
                 return (
-                    <div key={flight._id}>
+                    <div className='flightDiv' key={flight._id}>
                         <div><strong>Flight Id: {flight._id}</strong></div>
                         <div><strong>Flight Number: {flight.flightNumber}</strong></div>
                         <div><strong>Departure Date: {flight.departureDate}</strong></div>
                         <div><strong>Arrival Date: {flight.arrivalDate}</strong></div>
                         <div><strong>Number of passengers: {flight.currentNumPassengers}</strong></div>
                         <div><strong>Passenger Limit: {flight.passengerLimit}</strong></div>
-                        <button onClick={() => deleteFlight(flight._id)}>Delete Flight</button>
+                        <button onClick={() => deleteFlight(flight._id)} >Delete Flight</button>
+                        
+                       
                     </div>
+                   
                 );
             })}
         </div>
