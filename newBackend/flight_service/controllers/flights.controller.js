@@ -1,4 +1,4 @@
-const Flight = require('../models/flights.models');
+export const Flight = require('../models/flights.models');
 
 const createFlight = async ({flightNumber, departureDate, arrivalDate, departureTime, arrivalTime,
      departureAirport, arrivalAirport, currentNumPassengers, passengerLimit}) =>{

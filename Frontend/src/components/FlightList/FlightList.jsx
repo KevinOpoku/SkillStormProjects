@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Card, Table, Row,Col, CardGroup } from 'react-bootstrap';
 import './FlightList.css';
 export const FlightList = () => {
 
     const [flights, setFlights] = useState([]);
+
+   
 
     // As soon as the component loads, we fetch all movies
     useEffect(() => {
         axios.get('http://localhost:8086/flights')
             .then(res => setFlights(res.data));
     }, []);
+
+    
 
     const deleteFlight = async (flightId) =>{
         console.log(flightId)
@@ -23,27 +29,39 @@ export const FlightList = () => {
        
     }
     return (
-        <div>
-            {/* Transform the movies array into an array of JSX elements */}
-            {flights.map((flight, index) => {
-                // For our keys, we should use some unique property for the key value
+        <div >
+        <CardGroup>
+            
+            {/* Transform the movies array into an array of JSX elements
+             // For our keys, we should use some unique property for the key value
                 // Using index is a last resort if you have nothing else to use
                 // Unique ids should be used ONLY if the id was created at time of data creation (It won't change)
+            */}
+            {flights.map((flight, index) => {
+               
                 return (
-                    <div className='flightDiv' key={flight._id}>
-                        <div><strong>Flight Id: {flight._id}</strong></div>
-                        <div><strong>Flight Number: {flight.flightNumber}</strong></div>
-                        <div><strong>Departure Date: {flight.departureDate}</strong></div>
-                        <div><strong>Arrival Date: {flight.arrivalDate}</strong></div>
-                        <div><strong>Number of passengers: {flight.currentNumPassengers}</strong></div>
-                        <div><strong>Passenger Limit: {flight.passengerLimit}</strong></div>
-                        <button onClick={() => deleteFlight(flight._id)} >Delete Flight</button>
-                        
-                       
-                    </div>
+                    <Row>
+                     <Card className="g-4" style={{width: '25rem', marginLeft: "5rem" ,backgroundColor:"#FFFE14"}} key={flight._id}>
+                         <Card.Body>
+                             <Card.Header as="h5" style={{backgroundColor:"white"}}><strong>Flight Id: {flight._id}</strong></Card.Header>
+                                 <Card.Text className='cardText'>Flight Number: {flight.flightNumber}</Card.Text>
+                                 <Card.Text className='cardText'>Departure Date: {flight.departureDate}</Card.Text>
+                                 <Card.Text className='cardText'>Arrival Date: {flight.arrivalDate}</Card.Text>
+                                 <Card.Text className='cardText'>Departure Time: {flight.departureTime}</Card.Text>
+                                 <Card.Text className='cardText'>Arrival Time: {flight.arrivalTime}</Card.Text>
+                                 <Card.Text className='cardText'>Number of passengers: {flight.currentNumPassengers}</Card.Text>
+                                 <Card.Text className='cardText'>Passenger Limit: {flight.passengerLimit}</Card.Text>
+                                 <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor:"purple", borderColor:"purple"}}>Delete</Button>
+                         </Card.Body>
+                     </Card>
+                     </Row>
+               
+          
                    
                 );
             })}
+        </CardGroup>
         </div>
+        
     );
 }

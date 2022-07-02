@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import ThemeContext from '../contexts/ThemeContext';
-import { Nav, NavItem, NavLink, NavSection } from '../Nav';
+import { Navbar, Nav,Container } from 'react-bootstrap';
+import './AppNav.css';
+//import { Nav, NavItem, NavLink, NavSection } from '../Nav';
 
 // This is an opinionated NavBar
 export const AppNav = () => {
@@ -10,26 +12,18 @@ export const AppNav = () => {
     //const { username } = useSelector(store => store);
 
     return (
-        <Nav backgroundColor="Purple">
-            <NavSection jc="flex-start">
-                <NavItem>
-                    Home
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/CreateFlights" transitionColor="gold">Create Flights</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/DisplayFlights" transitionColor="gold">Display Flights</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/DeleteFlights" transitionColor="gold">Delete a Flight</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/UpdateFlights" transitionColor="#0000FF">Update Flights</NavLink>
-                </NavItem>
-              
-            </NavSection>
-           
-        </Nav>
+        <>
+            <Navbar className='Navbar' bg="dark" variant="dark">
+                <Container>
+                <Navbar.Brand href="/">Generic Flight Service Name</Navbar.Brand>
+                <Nav className="me-auto">
+                <Nav.Link href="/CreateFlights">Create Flights</Nav.Link>
+                <Nav.Link href="/DisplayFlights">Display FLights</Nav.Link>
+                <Nav.Link href="/DeleteFlights">Delete Flights</Nav.Link>
+                <Nav.Link href="/UpdateFlights">Update Flights</Nav.Link>
+                </Nav>
+                </Container>
+            </Navbar>
+            </>
     );
 }

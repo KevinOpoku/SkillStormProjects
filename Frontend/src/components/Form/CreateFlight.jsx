@@ -2,6 +2,7 @@ import { useRef } from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import './FlightForm.css';
+import { Form, Button } from "react-bootstrap";
 
 export const CreateFlight = () => {
 
@@ -23,7 +24,7 @@ export const CreateFlight = () => {
             {   flightNumber: flightNumberRef.current.value,
                 departureDate: departureDateRef.current.value,
                 arrivalDate: arrivalDateRef.current.value,
-                departureTime: departureDateRef.current.value,
+                departureTime: departureTimeRef.current.value,
                 arrivalTime: arrivalTimeRef.current.value,
                 departureAirport: departureAirportRef.current.value,
                 arrivalAirport: arrivalAirportRef.current.value,
@@ -37,46 +38,59 @@ export const CreateFlight = () => {
     }
     
     return (
+        <Form onSubmit={handleSubmit} style={{color: "purple"}}>
+            <Form.Group className="mb-3">
+                <Form.Label>Flight Number</Form.Label>
+                <Form.Control type="number" placeholder="Enter Flight Number" ref={flightNumberRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Departure Date</Form.Label>
+                <Form.Control type="date" placeholder="Enter Departure Date" ref={departureDateRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Arrival Date</Form.Label>
+                <Form.Control type="date" placeholder="Enter Arrival Date" ref={arrivalDateRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Departure Time</Form.Label>
+                <Form.Control type="time" placeholder="Enter Departure Time" ref={departureTimeRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Arrival Time</Form.Label>
+                <Form.Control type="time" placeholder="Enter Arrival Time" ref={arrivalTimeRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Departure Airport</Form.Label>
+                <Form.Control type="text" placeholder="Enter Departure Airport" ref={departureAirportRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Arrival Airport</Form.Label>
+                <Form.Control type="text" placeholder="Enter Arrival Airport" ref={arrivalAirportRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Current Number of passengers</Form.Label>
+                <Form.Control type="number" placeholder="Enter Current Number of passengers" ref={currentNumPassRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+                <Form.Label>Flight Capacity</Form.Label>
+                <Form.Control type="number" placeholder="Enter Flight Capacity" ref={flightCapacityRef} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" label="I have reviewed flight information" />
+            </Form.Group>
+            <Button variant="primary" type="submit">Submit</Button>
+        </Form>
         
-        <form className="MyForm" onSubmit={handleSubmit}>
-            <label htmlFor="flightNumber">Flight Number:</label>
-            <div>
-                <input className="flightInput" id="flightNumber" type="number"  ref = {flightNumberRef}/>
-            </div>
-            <label htmlFor="departureDate">Departure Date: </label>
-            <div>
-                <input className="flightInput" id="departureDate" type="date" ref = {departureDateRef}/>
-            </div>
-            <label htmlFor="arrivalDate">Arrival Date: </label>
-            <div>
-                <input className="flightInput" id="arrivalDate" type="date" ref = {arrivalDateRef}/>
-            </div>
-            <label htmlFor="departureTime">Departure Time: </label>
-            <div>
-                <input className="flightInput" id="departureTime" type="time" ref = {departureTimeRef}/>
-            </div>
-            <label htmlFor="arrivalTime">Arrival Time: </label>
-            <div>
-                <input className="flightInput" id="arrivalTime" type="time" ref = {arrivalTimeRef}/>
-            </div>
-            <label htmlFor="departureAirport">Departure Airport: </label>
-            <div>
-                <input className="flightInput" id="departureAirport" type="text" ref = {departureAirportRef}/>
-            </div>
-            <label htmlFor="arrivalAirport">Arrival Airport: </label>
-            <div>
-                <input className="flightInput" id="arrivalAirport" type="text" ref = {arrivalAirportRef}/>
-            </div>
-            <label htmlFor="currentNumPass">Current Number of Passengers: </label>
-            <div>
-                <input className="flightInput" id="currentNumPass" type="number" ref = {currentNumPassRef}/>
-            </div>
-            <label htmlFor="flightCapacity">Flight Capacity: </label>
-            <div>
-                <input className="flightInput" id="flightCapacity" type="number" ref = {flightCapacityRef }/>
-            </div>
-            <input type="submit" value="Add Flight" />
-        </form>
+       
         
     )
 };

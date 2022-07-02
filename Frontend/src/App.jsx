@@ -30,7 +30,7 @@ const App = () => {
           {/* Everything in here is going to managed by react-router-dom so that it can toggle between pages */}
           <BrowserRouter>
               <AppNav />
-              <button onClick={toggleTheme}>Toggle Theme</button>
+              
               <Routes>
                   {/* When the URL in the browser becomes /, toggle on the Landing page */}
                   <Route path="/" element= "" />

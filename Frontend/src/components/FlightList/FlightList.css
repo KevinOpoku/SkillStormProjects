@@ -1,8 +1,3 @@
-.flightDiv{
-    border: 5px solid black;
-    background-color: gold;
-    width: auto;
-    height: auto;
-    margin: auto;
-    padding: 10px;
+.cardText{
+   font-weight: bold;
 }
