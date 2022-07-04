@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Card, Table, Row,Col, CardGroup } from 'react-bootstrap';
+import { Button, Card,  Row, CardGroup } from 'react-bootstrap';
 import './FlightList.css';
+import React, {useSta} from 'react';
 export const FlightList = () => {
 
     const [flights, setFlights] = useState([]);
+   
+    
+  
 
    
 
@@ -28,6 +32,9 @@ export const FlightList = () => {
         }
        
     }
+
+  
+
     return (
         <div >
         <CardGroup>
@@ -43,7 +50,7 @@ export const FlightList = () => {
                     <Row>
                      <Card className="g-4" style={{width: '25rem', marginLeft: "5rem" ,backgroundColor:"#FFFE14"}} key={flight._id}>
                          <Card.Body>
-                             <Card.Header as="h5" style={{backgroundColor:"white"}}><strong>Flight Id: {flight._id}</strong></Card.Header>
+                             <Card.Header as="h5" style={{backgroundColor:"white"}}><strong>Flight ID: {flight._id}</strong></Card.Header>
                                  <Card.Text className='cardText'>Flight Number: {flight.flightNumber}</Card.Text>
                                  <Card.Text className='cardText'>Departure Date: {flight.departureDate}</Card.Text>
                                  <Card.Text className='cardText'>Arrival Date: {flight.arrivalDate}</Card.Text>
@@ -52,6 +59,7 @@ export const FlightList = () => {
                                  <Card.Text className='cardText'>Number of passengers: {flight.currentNumPassengers}</Card.Text>
                                  <Card.Text className='cardText'>Passenger Limit: {flight.passengerLimit}</Card.Text>
                                  <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor:"purple", borderColor:"purple"}}>Delete</Button>
+                                 <Button style={{backgroundColor:"purple", borderColor:"purple"}}>Test</Button>
                          </Card.Body>
                      </Card>
                      </Row>
@@ -60,7 +68,10 @@ export const FlightList = () => {
                    
                 );
             })}
+            
         </CardGroup>
+        
+
         </div>
         
     );
