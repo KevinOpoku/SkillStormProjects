@@ -18,9 +18,9 @@ export const AppNav = () => {
                 <Navbar.Brand href="/">Generic Flight Service Name</Navbar.Brand>
                 <Nav className="me-auto">
                 <Nav.Link href="/CreateFlights">Create Flights</Nav.Link>
-                <Nav.Link href="/DisplayFlights">Display FLights</Nav.Link>
-                <Nav.Link href="/DeleteFlights">Delete Flights</Nav.Link>
+                <Nav.Link href="/DisplayFlights">Display Flights</Nav.Link>
                 <Nav.Link href="/UpdateFlights">Update Flights</Nav.Link>
+                <Nav.Link href="/ErrorPageShowcase">Error Page</Nav.Link>
                 </Nav>
                 </Container>
             </Navbar>

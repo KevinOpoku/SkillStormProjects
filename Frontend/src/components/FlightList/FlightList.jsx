@@ -48,9 +48,9 @@ export const FlightList = () => {
                
                 return (
                     <Row>
-                     <Card className="g-4" style={{width: '25rem', marginLeft: "5rem" ,backgroundColor:"#FFFE14"}} key={flight._id}>
-                         <Card.Body>
-                             <Card.Header as="h5" style={{backgroundColor:"white"}}><strong>Flight ID: {flight._id}</strong></Card.Header>
+                     <Card className="g-4" bg = "info" style={{width: '25rem', marginLeft: "5rem" }} key={flight._id}>
+                         <Card.Body >
+                             <Card.Header as="h5" style={{backgroundColor: "orange"}} ><strong><u>Flight ID: {flight._id}</u></strong></Card.Header>
                                  <Card.Text className='cardText'>Flight Number: {flight.flightNumber}</Card.Text>
                                  <Card.Text className='cardText'>Departure Date: {flight.departureDate}</Card.Text>
                                  <Card.Text className='cardText'>Arrival Date: {flight.arrivalDate}</Card.Text>
@@ -58,8 +58,7 @@ export const FlightList = () => {
                                  <Card.Text className='cardText'>Arrival Time: {flight.arrivalTime}</Card.Text>
                                  <Card.Text className='cardText'>Number of passengers: {flight.currentNumPassengers}</Card.Text>
                                  <Card.Text className='cardText'>Passenger Limit: {flight.passengerLimit}</Card.Text>
-                                 <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor:"purple", borderColor:"purple"}}>Delete</Button>
-                                 <Button style={{backgroundColor:"purple", borderColor:"purple"}}>Test</Button>
+                                 <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor: "orange", borderColor: "orange"}}><strong>Delete</strong></Button>
                          </Card.Body>
                      </Card>
                      </Row>

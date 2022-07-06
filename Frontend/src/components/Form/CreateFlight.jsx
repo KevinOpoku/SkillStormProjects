@@ -19,26 +19,34 @@ export const CreateFlight = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        try{
-            await axios.post('http://localhost:8086/flights',
-            {   flightNumber: flightNumberRef.current.value,
-                departureDate: departureDateRef.current.value,
-                arrivalDate: arrivalDateRef.current.value,
-                departureTime: departureTimeRef.current.value,
-                arrivalTime: arrivalTimeRef.current.value,
-                departureAirport: departureAirportRef.current.value,
-                arrivalAirport: arrivalAirportRef.current.value,
-                currentNumPassengers: currentNumPassRef.current.value,
-                passengerLimit: flightCapacityRef.current.value });
-            //navigate('../', {replace: true});
-        }catch(err){
-            console.error(err);
-            throw {status: 400, message: err};
+        if (Number(currentNumPassRef.current.value) > Number(flightCapacityRef.current.value)){
+            window.alert("Whoa There");
+        }else{
+            try{
+                await axios.post('http://localhost:8086/flights',
+                {   flightNumber: flightNumberRef.current.value,
+                    departureDate: departureDateRef.current.value,
+                    arrivalDate: arrivalDateRef.current.value,
+                    departureTime: departureTimeRef.current.value,
+                    arrivalTime: arrivalTimeRef.current.value,
+                    departureAirport: departureAirportRef.current.value,
+                    arrivalAirport: arrivalAirportRef.current.value,
+                    currentNumPassengers: currentNumPassRef.current.value,
+                    passengerLimit: flightCapacityRef.current.value });
+                //navigate('../', {replace: true});
+            }catch(err){
+                console.error(err);
+                throw {status: 400, message: err};
+            }
         }
+            
+        
+       
     }
     
     return (
-        <Form onSubmit={handleSubmit} style={{color: "purple"}}>
+
+        <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Flight Number</Form.Label>
                 <Form.Control type="number" placeholder="Enter Flight Number" ref={flightNumberRef} />
@@ -82,10 +90,6 @@ export const CreateFlight = () => {
             <Form.Group className="mb-3">
                 <Form.Label>Flight Capacity</Form.Label>
                 <Form.Control type="number" placeholder="Enter Flight Capacity" ref={flightCapacityRef} />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="I have reviewed flight information" />
             </Form.Group>
             <Button variant="primary" type="submit">Submit</Button>
         </Form>

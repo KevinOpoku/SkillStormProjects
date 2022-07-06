@@ -61,32 +61,14 @@ export const UpdateFlight = () => {
     }
     
     return (
-        <div >
 
-        {flights.map((flight, index) => {
-            return(
-                <div className="flights" key={flights._id}>
-                    <div>Flight Id: {flight._id}</div><Button onClick={() => saveId(flight._id)}>Save ID</Button>
-                </div>
-            )
-        })}
+        <><div>
 
-
-
-
-        <div>
-            
-                <Form >
-
-                <Form.Group className="mb-3">
-                    <Form.Label>Flight ID</Form.Label>
-                    
-                    <Form.Control placeholder="Enter Flight ID" ref={flightIdRef} />
-                </Form.Group>
+            <Form>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Flight Number</Form.Label>
-                    
+
                     <Form.Control type="number" placeholder="Enter Flight Number" ref={flightNumberRef} />
                 </Form.Group>
 
@@ -131,18 +113,41 @@ export const UpdateFlight = () => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="I have reviewed flight information" />
                 </Form.Group>
-                <Button onClick={() => updateFlight()} style={{backgroundColor:"purple", borderColor:"purple"}}>Update Flight</Button>
             </Form>
-                
-                
+
+
+
+
+           
             
- 
-       
-       
-    </div>
-    </div>
+        </div>
+        <div>
+            <CardGroup>
+                {flights.map((flight, index) => {
+                    return (
+                        <Row>
+                     <Card className="g-4" bg = "info" style={{width: '25rem', marginLeft: "5rem" }} key={flight._id}>
+                         <Card.Body >
+                             <Card.Header as="h5" style={{backgroundColor: "orange"}} ><strong><u>Flight ID: {flight._id}</u></strong></Card.Header>
+                                 <Card.Text className='cardText'>Flight Number: {flight.flightNumber}</Card.Text>
+                                 <Card.Text className='cardText'>Departure Date: {flight.departureDate}</Card.Text>
+                                 <Card.Text className='cardText'>Arrival Date: {flight.arrivalDate}</Card.Text>
+                                 <Card.Text className='cardText'>Departure Time: {flight.departureTime}</Card.Text>
+                                 <Card.Text className='cardText'>Arrival Time: {flight.arrivalTime}</Card.Text>
+                                 <Card.Text className='cardText'>Number of passengers: {flight.currentNumPassengers}</Card.Text>
+                                 <Card.Text className='cardText'>Passenger Limit: {flight.passengerLimit}</Card.Text>
+                                 <Button onClick={() => saveId(flight._id)} style={{backgroundColor: "orange", borderColor: "orange"}}><strong>Update this flight</strong></Button>
+                         </Card.Body>
+                     </Card>
+                     </Row>
+                    );
+                })}
+
+            </CardGroup>
+
+
+            </div></>
     )
 
 };
