@@ -2,10 +2,6 @@ const Flight = require('../models/flights.models');
 
 const createFlight = async ({flightNumber, departureDate, arrivalDate, departureTime, arrivalTime,
      departureAirport, arrivalAirport, currentNumPassengers, passengerLimit}) =>{
-    console.log(currentNumPassengers);
-    if(currentNumPassengers>passengerLimit){
-        return currentNumPassengers;
-    }else{
         try{
             const flight = new Flight({
                 flightNumber, 
@@ -23,7 +19,7 @@ const createFlight = async ({flightNumber, departureDate, arrivalDate, departure
         }catch (err){
             console.log(err);
             throw{status: 400, message: err};
-        }
+        
     }
     
 }

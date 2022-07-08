@@ -17,6 +17,7 @@ export const AppNav = () => {
                 <Container>
                 <Navbar.Brand href="/">Generic Flight Service Name</Navbar.Brand>
                 <Nav className="me-auto">
+                <Nav.Link href='/'>Home</Nav.Link>
                 <Nav.Link href="/CreateFlights">Create Flights</Nav.Link>
                 <Nav.Link href="/DisplayFlights">Display Flights</Nav.Link>
                 <Nav.Link href="/UpdateFlights">Update Flights</Nav.Link>

@@ -27,6 +27,7 @@ export const FlightList = () => {
         //event.preventDefault();
         try{
             await axios.delete(`http://localhost:8086/flights/${id}`);
+            window.alert(`Flight: ${id} has been successfully deleted.`)
         }catch(err){
             console.log(err);
         }
@@ -58,7 +59,7 @@ export const FlightList = () => {
                                  <Card.Text className='cardText'>Arrival Time: {flight.arrivalTime}</Card.Text>
                                  <Card.Text className='cardText'>Number of passengers: {flight.currentNumPassengers}</Card.Text>
                                  <Card.Text className='cardText'>Passenger Limit: {flight.passengerLimit}</Card.Text>
-                                 <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor: "orange", borderColor: "orange"}}><strong>Delete</strong></Button>
+                                 <Button onClick={() => deleteFlight(flight._id)} style={{backgroundColor: "orange", borderColor: "orange", color: "black"}}><strong>Delete</strong></Button>
                          </Card.Body>
                      </Card>
                      </Row>

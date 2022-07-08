@@ -41,23 +41,28 @@ export const UpdateFlight = () => {
     const updateFlight = async (flightId) => {
         
         console.log(flightId);
-        console.log(flightNumberRef);
         const id = flightId;
-        
-        try{
-            await axios.put(`http://localhost:8086/flights/${id}`, {
-            flightNumber: flightNumberRef.current.value,
-            departureDate: departureDateRef.current.value,
-            arrivalDate: arrivalDateRef.current.value,
-            departureTime: departureTimeRef.current.value,
-            arrivalTime: arrivalTimeRef.current.value,
-            departureAirport: departureAirportRef.current.value,
-            arrivalAirport: arrivalAirportRef.current.value,
-            currentNumPassengers: currentNumPassRef.current.value,
-            passengerLimit: flightCapacityRef.current.value });
-        }catch(err){
-            console.log(err);
+        if(Number(currentNumPassRef.current.value) > Number(flightCapacityRef.current.value)){
+            window.alert("Passengers Exceeding FLight Capacity")
+        }else{
+            try{
+                await axios.put(`http://localhost:8086/flights/${id}`, {
+                flightNumber: flightNumberRef.current.value,
+                departureDate: departureDateRef.current.value,
+                arrivalDate: arrivalDateRef.current.value,
+                departureTime: departureTimeRef.current.value,
+                arrivalTime: arrivalTimeRef.current.value,
+                departureAirport: departureAirportRef.current.value,
+                arrivalAirport: arrivalAirportRef.current.value,
+                currentNumPassengers: currentNumPassRef.current.value,
+                passengerLimit: flightCapacityRef.current.value });
+                window.alert(`Flight: ${id} updated.`)
+            }catch(err){
+                console.log(err);
+            }
         }
+        
+       
     }
     
     return (

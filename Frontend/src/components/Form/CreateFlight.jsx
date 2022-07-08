@@ -33,6 +33,7 @@ export const CreateFlight = () => {
                     arrivalAirport: arrivalAirportRef.current.value,
                     currentNumPassengers: currentNumPassRef.current.value,
                     passengerLimit: flightCapacityRef.current.value });
+                    window.alert(`Your flight with Flight Number: ${flightNumberRef.current.value} has been succesfully created.`)
                 //navigate('../', {replace: true});
             }catch(err){
                 console.error(err);

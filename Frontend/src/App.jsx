@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ThemeContext, {themes} from './components/contexts/ThemeContext';
 import {CreateFlight} from './components/Form';
 import { CFlights} from './pages/CreateFlight';
+import { LandingPage } from './pages/Landing';
 import { DisplayFlights } from './pages/DisplayFlight';
 import {UFlights} from './pages/UpdateFlight';
 import { Error } from './pages/Error';
@@ -33,7 +34,7 @@ const App = () => {
               
               <Routes>
                   {/* When the URL in the browser becomes /, toggle on the Landing page */}
-                  <Route path="/" element= "" />
+                  <Route path="/" element= {<LandingPage />} />
                   <Route path="/Createflights" element={<CFlights />} />
                   <Route path="/Displayflights" element={<DisplayFlights />} />
                   <Route path='/Updateflights' element={<UFlights />} />
