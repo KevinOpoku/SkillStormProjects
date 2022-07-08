@@ -69,8 +69,7 @@ const updateFlight = async (id, body) => {
             throw `No flight with the id of ${id} found.`
         }
         return flight;
-        //await flight.updateMany({flightNumber: flightNumber, departureDate: departureDate,arrivalDate: arrivalDate,departureTime: departureTime,arrivalTime: arrivalTime,departureAirport: departureAirport,arrivalAirport: arrivalAirport,currentNumPassengers: currentNumPassengers,passengerLimit:passengerLimit});
-        //return `Fields updated for flight ${id}`;
+      
     }
     catch(err){
         console.error(err);
