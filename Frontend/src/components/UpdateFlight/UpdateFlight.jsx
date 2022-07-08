@@ -43,7 +43,7 @@ export const UpdateFlight = () => {
         console.log(flightId);
         const id = flightId;
         if(Number(currentNumPassRef.current.value) > Number(flightCapacityRef.current.value)){
-            window.alert("Passengers Exceeding FLight Capacity")
+            window.alert("Passengers Exceeding Flight Capacity")
         }else{
             try{
                 await axios.put(`http://localhost:8086/flights/${id}`, {
